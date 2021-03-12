@@ -1,9 +1,11 @@
 # 42oauth example
 
-
 ## Passport-42 example
 
-This example demonstrates how to use [Express](http://expressjs.com/) 4.x and
+* This example use [`ejs` template engine](https://ejs.co/).
+While [the original example](https://github.com/pandark/passport-42-example)
+is based on [`hbs`](https://handlebarsjs.com/).
+* This example demonstrates how to use [Express](http://expressjs.com/) 4.x and
 [Passport-42](http://www.passportjs.org/packages/passport-42/) to authenticate
 users using [42 OAuth 2.0 API](https://api.intra.42.fr/apidoc).
 Use this example as a starting point for your own web applications.
@@ -31,3 +33,8 @@ $ FORTYTWO_CLIENT_ID="xxxxxx" FORTYTWO_CLIENT_SECRET="xxxxxx" npm run start
 Open a web browser and navigate to
 [http://localhost:3000/](http://127.0.0.1:3000/)
 to see the example in action.
+
+## 이 문서의 저작권
+
+<img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/cc-zero.png" width="80px"></img>
+이 문서는 [CC0 (Public Domain, 크리에이티브 커먼즈 권리 포기)](LICENSE)로 누구나 영리적인 목적을 포함한 어떤 목적으로든 그리고 어떤 방법으로든 마음대로 사용할 수 있습니다.
