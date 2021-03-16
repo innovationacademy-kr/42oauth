@@ -34,6 +34,9 @@ Open a web browser and navigate to
 [http://localhost:3000/](http://127.0.0.1:3000/)
 to see the example in action.
 
+## 42 API List
+* [API List](./docs/42api.md)
+
 ## 이 문서의 저작권
 
 <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/cc-zero.png" width="80px"></img>
