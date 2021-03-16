@@ -15,6 +15,7 @@ passport.use(new FortyTwoStrategy({
   callbackURL: 'http://127.0.0.1:3000/login/42/return'
 },
   function (accessToken, refreshToken, profile, cb) {
+    console.log('accessToken', accessToken, 'refreshToken', refreshToken);
     // In this example, the user's 42 profile is supplied as the user
     // record.  In a production-quality application, the 42 profile should
     // be associated with a user record in the application's database, which
@@ -69,7 +70,6 @@ app.get('/login/42/return',
 app.get('/profile',
   ensureLoggedIn(),
   function (req, res) {
-    console.log(req.user);
     res.render('profile', { user: req.user });
   });
 
