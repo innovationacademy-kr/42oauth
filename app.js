@@ -13,9 +13,11 @@ const ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 passport.use(new FortyTwoStrategy({
   clientID: process.env.FORTYTWO_CLIENT_ID,
   clientSecret: process.env.FORTYTWO_CLIENT_SECRET,
-  callbackURL: 'http://127.0.0.1:3000/login/42/return'
+  callbackURL: 'http://127.0.0.1:3000/login/42/return',
+  passReqToCallback: true,
 },
-  function (accessToken, refreshToken, profile, cb) {
+  function (req, accessToken, refreshToken, profile, cb) {
+    req.session.accessToken = accessToken;
     console.log('accessToken', accessToken, 'refreshToken', refreshToken);
     // In this example, the user's 42 profile is supplied as the user
     // record.  In a production-quality application, the 42 profile should
