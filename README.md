@@ -24,6 +24,8 @@ $ npm install
 Register [an app](https://profile.intra.42.fr/oauth/applications) on 42 intra
 and set the redirect URI to `http://127.0.0.1/login/42/return`.
 
+Copy `.env.sample` to `.env` and edit CLIENT_ID and CLIENT_SECRET info.
+
 Start the server.
 
 ```bash

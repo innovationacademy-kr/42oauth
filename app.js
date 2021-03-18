@@ -1,13 +1,14 @@
-var express = require('express');
-var path = require('path');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var session = require('express-session');
-var bodyParser = require('body-parser');
+require('dotenv').config()
+const express = require('express');
+const path = require('path');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const bodyParser = require('body-parser');
 
-var passport = require('passport');
-var FortyTwoStrategy = require('passport-42').Strategy;
-var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
+const passport = require('passport');
+const FortyTwoStrategy = require('passport-42').Strategy;
+const ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 
 passport.use(new FortyTwoStrategy({
   clientID: process.env.FORTYTWO_CLIENT_ID,
@@ -32,7 +33,7 @@ passport.deserializeUser(function (obj, cb) {
 });
 
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -80,7 +81,7 @@ app.get('/logout', function (req, res) {
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-  var err = new Error('Not Found');
+  const err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
