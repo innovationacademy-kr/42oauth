@@ -76,6 +76,36 @@ app.get('/profile',
     res.render('profile', { user: req.user });
   });
 
+app.get('/data',
+  ensureLoggedIn(),
+  function (req, res) {
+    const accessToken = req.session.accessToken;
+    console.log(accessToken);
+    const axios = require('axios');
+    axios.get('https://api.intra.42.fr/v2/campus', { 'headers': {
+      'authorization': 'bearer ' + accessToken
+    }})
+    .then(async response => {
+      const { Model, DataTypes } = require('sequelize');
+      const sequelize = require('./config/db');
+      class Campus extends Model { }
+      Campus.init({
+        data: DataTypes.JSON,
+      }, { sequelize, modelName: 'campus' });
+
+      await sequelize.sync();
+      const raw = response.data;
+      raw.sort((a, b) => (a.id > b.id) ? 1 : -1);
+      raw.forEach(item => {
+        if (!item.website.match(/^http/)) {
+          item.website = 'https://' + item.website;
+        }
+      })
+
+      res.render('data', { data: raw });
+    })
+  });
+
 app.get('/logout', function (req, res) {
   req.logout();
   res.redirect('/');
