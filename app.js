@@ -94,7 +94,7 @@ app.get('/data',
       }, { sequelize, modelName: 'campus' });
 
       await sequelize.sync();
-      const raw = response.data;
+      const raw = JSON.parse(response.body);
       raw.sort((a, b) => (a.id > b.id) ? 1 : -1);
       raw.forEach(item => {
         if (!item.website.match(/^http/)) {
