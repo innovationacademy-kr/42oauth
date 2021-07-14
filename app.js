@@ -13,7 +13,7 @@ const ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 passport.use(new FortyTwoStrategy({
   clientID: process.env.FORTYTWO_CLIENT_ID,
   clientSecret: process.env.FORTYTWO_CLIENT_SECRET,
-  callbackURL: 'http://127.0.0.1:3000/login/42/return',
+  callbackURL: 'http://localhost:3000/login/42/return',
   passReqToCallback: true,
 },
   function (req, accessToken, refreshToken, profile, cb) {
@@ -81,8 +81,8 @@ app.get('/data',
   function (req, res) {
     const accessToken = req.session.accessToken;
     console.log(accessToken);
-    const axios = require('axios');
-    axios.get('https://api.intra.42.fr/v2/campus', { 'headers': {
+    const got = require('got');
+    got.get('https://api.intra.42.fr/v2/campus', { 'headers': {
       'authorization': 'bearer ' + accessToken
     }})
     .then(async response => {
