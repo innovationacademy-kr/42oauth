@@ -21,6 +21,12 @@ $ cd 42oauth
 $ npm install
 ```
 
+Start a mysql server instance.
+
+```bash
+$ docker run --name 42oauth-mysql -e MYSQL_ROOT_PASSWORD=mysql -d -p 3306:3306 mysql
+```
+
 Register [an app](https://profile.intra.42.fr/oauth/applications) on 42 intra
 and set the redirect URI to `http://localhost:3000/login/42/return`.
 
