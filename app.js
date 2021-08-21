@@ -102,7 +102,7 @@ app.get('/data',
         }
       })
 
-      res.render('data', { data: raw });
+      res.render('data', { user: req.user, data: raw });
     })
   });
 
