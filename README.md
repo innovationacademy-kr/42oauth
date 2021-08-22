@@ -29,7 +29,7 @@ Copy `.env.sample` to `.env` and edit CLIENT_ID and CLIENT_SECRET info.
 Start the server.
 
 ```bash
-$ FORTYTWO_CLIENT_ID="xxxxxx" FORTYTWO_CLIENT_SECRET="xxxxxx" npm run start
+$ npm run start
 ```
 
 Open a web browser and navigate to
